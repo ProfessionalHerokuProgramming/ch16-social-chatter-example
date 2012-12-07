@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @shipment.id %>
+</p>
+
+<p>
+  <b>Shipped:</b>
+  <%= @shipment.shipped %>
+</p>
+
+<p>
+  <b>Shipment date:</b>
+  <%= @shipment.shipment_date %>
+</p>
+
+<h3>Chatter:</h3>
+
+<% @feed.each do |f| %>
+    <b><%= @user_list[f.InsertedById] %>:</b> <%= f.Body %><br />
+<% end %>
+
+<form action="/post" method="post">
+    <input name="parent_id" type="hidden" value="<%= @id %>" />
+    <input name="content" type="text"/>
+    <%= csrf_meta_tag %>
+    <input value="Post" type="submit"/>
+</form>
+
+<%= link_to 'Edit', edit_shipment_path(@shipment) %> |
+<%= link_to 'Back', shipments_path %>

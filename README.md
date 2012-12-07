@@ -1,0 +1,1 @@
+The example application from the "Making Heroku Applications Social with the Chatter API" section of Chapter 16, "Building Social Applications with Heroku".

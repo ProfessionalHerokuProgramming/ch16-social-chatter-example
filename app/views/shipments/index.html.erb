@@ -1,0 +1,36 @@
+<h1>Listing shipments</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Shipped</th>
+    <th>Shipment date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shipments.each do |shipment| %>
+  <tr>
+    <td><%= shipment.id %></td>
+    <td><%= shipment.shipped %></td>
+    <td><%= shipment.shipment_date %></td>
+    <td><%= link_to 'Show', shipment %></td>
+    <td><%= link_to 'Edit', edit_shipment_path(shipment) %></td>
+    <td><%= link_to 'Destroy', shipment, method: :delete, data: 
+        { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><% if @authenticated%>
+    You're logged in as <%= @me.username%>. Click <a href="/logout">here</a> to 
+    logout.
+
+    <%= yield %>
+
+<% elsif%>
+    You're not logged in. Click <a href="/auth/salesforce">here</a> to login.
+<% end%></p>
+
+<%= link_to 'New Shipment', new_shipment_path %>
